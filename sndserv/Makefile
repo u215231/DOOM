@@ -6,8 +6,11 @@
 #
 #
 
-CC=gcc
-CFLAGS=-O -DNORMALUNIX -DLINUX
+# Marc: added compilation flag -m32 of 32-bit architecture.
+CC=gcc -m32
+
+# Marc: added -DMARC flag for code review.
+CFLAGS=-O -DNORMALUNIX -DLINUX -DMARC 
 LDFLAGS=
 LIBS=-lm
 

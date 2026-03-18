@@ -30,6 +30,11 @@ rcsid[] = "$Id: i_unix.c,v 1.5 1997/02/03 22:45:10 b1 Exp $";
 
 #include <math.h>
 
+/// @warning Added inclusion of <errno.h>.
+#ifdef MARC
+#include <errno.h>
+#endif
+
 #include <sys/time.h>
 #include <sys/types.h>
 
@@ -163,7 +168,10 @@ myioctl
   int*	arg )
 {   
     int		rc;
+/// @warning Marc Bosch Manzano: deleting extern definition of errno.
+#ifndef MARC
     extern int	errno;
+#endif
     
     rc = ioctl(fd, command, arg);  
     if (rc < 0)

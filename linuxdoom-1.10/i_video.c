@@ -46,7 +46,14 @@ int XShmGetEventBase( Display* dpy ); // problems with g++?
 #include <sys/socket.h>
 
 #include <netinet/in.h>
+
+/// @warning <errnos.h> changed to <errno.h>.
+#ifdef MARC
+#include <errno.h>
+#else
 #include <errnos.h>
+#endif
+
 #include <signal.h>
 
 #include "doomstat.h"
@@ -819,6 +826,11 @@ void I_InitGraphics(void)
 
     XDefineCursor(X_display, X_mainWindow,
 		  createnullcursor( X_display, X_mainWindow ) );
+
+/// @warning Installed colormap.
+#ifdef MARC
+	XInstallColormap(X_display, X_cmap);
+#endif
 
     // create the GC
     valuemask = GCGraphicsExposures;
