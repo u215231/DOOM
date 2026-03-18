@@ -78,12 +78,17 @@ OBJS=				\
 		$(O)/info.o				\
 		$(O)/sounds.o
 
-all:	 $(O)/linuxxdoom
+all: $(O) $(O)/linuxxdoom
+
+# Marc: added to automatically create linux directory
+$(O):
+	mkdir -p $(O)
 
 # Marc: rm -f linux/* changed to rm -f linux/*.o linux/linuxxdoom 
 clean:
 	rm -f *.o *~ *.flc
-	rm -f linux/*.o linux/linuxxdoom 
+	rm -f linux/*.o 
+ 	rm -f linux/linuxxdoom 
 
 $(O)/linuxxdoom:	$(OBJS) $(O)/i_main.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(O)/i_main.o \

@@ -16,11 +16,16 @@ LIBS=-lm
 
 O=linux
 
-all:	 $(O)/sndserver
+all: $(O) $(O)/sndserver
+
+# Marc: added to automatically create linux directory
+$(O):
+	mkdir -p $(O)
 
 clean:
 	rm -f *.o *~ *.flc
-	rm -f linux/*
+	rm -f linux/*.o 
+ 	rm -f linux/sndserver
 
 # Target
 $(O)/sndserver: \
