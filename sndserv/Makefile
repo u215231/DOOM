@@ -25,7 +25,7 @@ $(O):
 clean:
 	rm -f *.o *~ *.flc
 	rm -f linux/*.o 
- 	rm -f linux/sndserver
+	rm -f linux/sndserver
 
 # Target
 $(O)/sndserver: \

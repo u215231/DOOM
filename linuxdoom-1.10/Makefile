@@ -88,7 +88,7 @@ $(O):
 clean:
 	rm -f *.o *~ *.flc
 	rm -f linux/*.o 
- 	rm -f linux/linuxxdoom 
+	rm -f linux/linuxxdoom 
 
 $(O)/linuxxdoom:	$(OBJS) $(O)/i_main.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(O)/i_main.o \
